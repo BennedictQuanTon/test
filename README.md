@@ -4,43 +4,43 @@
 ![Git](https://img.shields.io/badge/Git-Automation-blue?logo=git)
 ![License](https://img.shields.io/badge/license-MIT-orange)
 
-Một dự án mẫu dùng để học tập, thực hành và tự động hóa các thao tác Git bằng Node.js (`simple-git`, `moment`, `jsonfile`). Dự án giúp tìm hiểu cơ chế hoạt động của Git commit, quản lý lịch sử và thử nghiệm hiển thị trên GitHub Contribution Graph.
+A lightweight sandbox project designed for learning, practicing, and automating Git operations using Node.js (`simple-git`, `moment`, `jsonfile`). This repository demonstrates programmatic Git workflows, custom timestamp manipulation, and automated commit scheduling.
 
 ---
 
-## 📌 Tính năng chính (Features)
+## 📌 Features
 
-- 🔄 **Git Automation với Node.js**: Sử dụng thư viện `simple-git` để tự động tạo commit, staging và push dữ liệu lập trình.
-- 📅 **Custom Date Backdating**: Tự động hóa việc điều chỉnh mốc thời gian ISO (`--date`) của commit về các khoảng thời gian tùy chọn.
-- 🎨 **Multi-tone Density Control**: Mô phỏng hoạt động đóng góp lập trình tự nhiên với các thuật toán phân bổ mật độ commit ngẫu nhiên.
-- 🛡️ **Streak & Contribution Patching**: Công cụ nhỏ giúp thử nghiệm bù đắp mốc thời gian commit cho các khoảng thời gian bị ngắt quãng.
+- 🔄 **Git Automation with Node.js**: Leverages `simple-git` for programmatic staging, committing, and remote pushing.
+- 📅 **Custom Date Backdating**: Automates ISO timestamp override (`--date`) to test commit history scheduling.
+- 🎨 **Multi-tone Density Control**: Simulates natural development activity using random commit frequency distribution algorithms.
+- 🛡️ **Streak & Contribution Patching**: Utility scripts to test commit date filling and contribution graph streak maintenance.
 
 ---
 
-## 🛠️ Hướng dẫn cài đặt & Sử dụng (Quick Start)
+## 🛠️ Quick Start
 
-### 1. Yêu cầu hệ thống
-- **Node.js**: v18 trở lên
-- **Git**: Đã cấu hình trên máy tính (`git config --global user.name` & `user.email`)
+### 1. Prerequisites
+- **Node.js**: v18 or higher
+- **Git**: Installed and configured (`git config --global user.name` & `user.email`)
 
-### 2. Cài đặt Dependencies
+### 2. Installation
 ```bash
 git clone https://github.com/BennedictQuanTon/test.git
 cd test
 npm install
 ```
 
-### 3. Các Script chính
+### 3. Project Structure
 
-| File | Mô tả |
+| File | Description |
 | :--- | :--- |
-| `index.js` | Mã nguồn chính chạy tự động hóa tạo commit theo thuật toán ngẫu nhiên. |
-| `add-specific-dates.js` | Script hỗ trợ bù commit cho các mốc thời gian chỉ định. |
-| `data.json` | File JSON trung gian ghi nhận thông tin từng commit. |
+| `index.js` | Core script for generating automated commits with multi-toned random distributions. |
+| `add-specific-dates.js` | Utility script to patch commits for specific target dates. |
+| `data.json` | Local JSON storage modified on each automated commit cycle. |
 
 ---
 
-## 📖 Ví dụ Code cơ bản (Code Snippet)
+## 📖 Code Example
 
 ```javascript
 import jsonfile from 'jsonfile';
@@ -50,7 +50,7 @@ import simpleGit from 'simple-git';
 const git = simpleGit();
 const FILE_PATH = './data.json';
 
-// Tạo commit với mốc thời gian tùy chọn
+// Programmatically create a commit with a custom timestamp
 async function createCustomCommit(dateString) {
     const data = { date: dateString, updated: new Date().toISOString() };
     await jsonfile.writeFile(FILE_PATH, data);
@@ -61,11 +61,11 @@ async function createCustomCommit(dateString) {
 
 ---
 
-## ⚠️ Lưu ý khi thực hành (Important Notes)
+## ⚠️ Important Notes
 
-- Khi sử dụng với repository **Private**, cần bật tùy chọn **"Show Private contributions"** trong phần cài đặt Contribution Graph trên profile GitHub.
-- Khi sử dụng với repository **Public**, các đóng góp sẽ tự động hiển thị công khai trên Profile của bạn.
-- Đảm bảo Email cấu hình trong Git local khớp với Email đăng ký trên tài khoản GitHub của bạn để đóng góp được tính chính xác.
+- **Private Repositories**: Enable **"Show Private contributions"** in your GitHub Profile settings to render contributions on your public graph.
+- **Public Repositories**: All commits pushed to default branches are automatically indexed as public contributions.
+- **Git Credentials**: Ensure your local `git config user.email` matches an email registered to your GitHub account for contributions to be attributed correctly.
 
 ---
 
